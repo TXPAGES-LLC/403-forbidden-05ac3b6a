@@ -1,0 +1,85 @@
+@import "tailwindcss" source("..");
+@theme inline {
+  --font-sans: var(--font-sans), 'Plus Jakarta Sans', sans-serif;
+  --font-display: var(--font-display), 'Barlow Condensed', sans-serif;
+
+  /* Core brand palette */
+  --color-background: #f7f5f2;
+  --color-foreground: #0f1c2e;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f1c2e;
+  --color-muted: #e8e4de;
+  --color-muted-foreground: #5a6478;
+  --color-border: #d1cdc6;
+  --color-input: #d1cdc6;
+  --color-ring: #0f1c2e;
+
+  /* Navy scale */
+  --color-navy: #0f1c2e;
+  --color-navy-800: #1a2e47;
+  --color-navy-700: #243d5e;
+  --color-navy-600: #2e4d76;
+  --color-navy-100: #e2e8f0;
+  --color-navy-50: #eef2f7;
+
+  /* Texas red — CTA ONLY */
+  --color-accent: #c0392b;
+  --color-accent-hover: #a93226;
+  --color-accent-50: #fdf2f1;
+
+  /* Warm neutrals */
+  --color-warm-white: #f7f5f2;
+  --color-warm-gray: #ede9e3;
+
+  --radius: 0.25rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  background-color: #f7f5f2;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-navy);
+    letter-spacing: 0.01em;
+  }
+  /* Allow headings inside dark/navy sections to inherit the section's text color */
+  .text-white h1,
+  .text-white h2,
+  .text-white h3,
+  .text-white h4,
+  .text-white h5,
+  .text-white h6 {
+    color: inherit;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* FAQ accordion */
+details summary {
+  list-style: none;
+  cursor: pointer;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
