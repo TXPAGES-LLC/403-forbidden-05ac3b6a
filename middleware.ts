@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-const PREFERRED_HOST = 'www.huntsvillemovingservicetx.com'
+const PREFERRED_HOST = 'www.huntsvillemovingservicetx.com'.trim()
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone()
@@ -13,7 +13,8 @@ export function middleware(request: NextRequest) {
     (protocol !== 'https:' || hostname !== PREFERRED_HOST)
   ) {
     url.protocol = 'https:'
-    url.host = PREFERRED_HOST
+    url.hostname = PREFERRED_HOST
+    url.port = ''
     return NextResponse.redirect(url, { status: 301 })
   }
 
