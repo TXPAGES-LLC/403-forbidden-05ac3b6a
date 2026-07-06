@@ -5,13 +5,10 @@ const PREFERRED_HOST = 'www.huntsvillemovingservicetx.com'.trim()
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone()
-  const { hostname, pathname, protocol } = url
+  const { hostname, pathname } = url
 
-  // 1. On production: force HTTPS + preferred www host
-  if (
-    process.env.NODE_ENV === 'production' &&
-    (protocol !== 'https:' || hostname !== PREFERRED_HOST)
-  ) {
+  // 1. On production: force preferred www host (HTTPS handled by Azure ingress)
+  if (process.env.NODE_ENV === 'production' && hostname !== PREFERRED_HOST) {
     url.protocol = 'https:'
     url.hostname = PREFERRED_HOST
     url.port = ''
